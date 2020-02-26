@@ -40,12 +40,16 @@
     <None Update="Content\MinecraftServerFiles\DummyFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Content\MinecraftServerFiles\logs\Dummyfile.txt">
+    <None Update="Content\MinecraftServerFiles\Server files goes here.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Content\TwitchProfile\DummyFile.txt">
+    <None Update="Content\TwitchProfile\Twtich Mod PRofile goes here, if any.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\MinecraftServerFiles\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
