@@ -9,18 +9,17 @@ Rename the server executable to "server.jar".
 
 ## Configure Config.json:
 
-Title: Set the title on the web-interface.
+**Title**: Set the title on the web-interface.
 
-Password: Set the password required for Starting/stopping the server via the web-interface. Currently, cannot be empty.
+**Password**: Set the password required for Starting/stopping the server via the web-interface. Currently, cannot be empty.
 
-JavaArguments: The arguments used to start the java executable, these are the same arguments that you would put in a "Start.bat/sh"-file.
+**JavaArguments**: The arguments used to start the java executable, these are the same arguments that you would put in a "Start.bat/sh"-file.
 Example: "-Xms256M -Xmx1G -jar server.jar" ("-jar server.jar" is fine if you don't need to set extra parameters")
 (OBS. don't prefix the arguments with "java", for example don't write "java -jar server-jar")
 
-IncludeTwitchMCProfile: If you made a mod-profile using the Twitch-app, this profile-file (.zip) is placed in /Content/TwitchProfile. 
+**IncludeTwitchMCProfile**: If you made a mod-profile using the Twitch-app, this profile-file (.zip) is placed in /Content/TwitchProfile. 
 Then the exact name of that file is typed into this field (including extension). Example: "IncludeTwitchMCProfile": "MyModPack.zip".
 Otherwise, if a mod-profile is not included, "false" or "".
-
 
 Set up and host the web-app using a web-server (no support is given for this, see link below for guidance).
 Make sure your web-server is reachable from the internet. Likely this requires port-forward/trigger to be enabled in your router (this may also be required for
