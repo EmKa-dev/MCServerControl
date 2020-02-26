@@ -1,7 +1,7 @@
 # MCServerControl
 Host a private MInecraft-server on a local machine and let users interact with it through a web-interface.
 
-##Purpose of this app:
+## Purpose of this app:
 
 This app was created for when you host a private Minecraft-server on your local network and machine,
 you don't neccessarily want the Minecraft-server to be running 100% of the time.
@@ -11,7 +11,7 @@ If the server is heavily modded, this also has the benefit of letting users
 remotely start the server and see when it is done loading (through their browser), and ready to join. Saving them from prematurely loading a
 potentially resource-heavy game if they want to keep using their machine without interruptions, while waiting.
 
-###Current features:
+## Current features:
 Let remote users start/stop the hosted Minecraft-server (with or without password-protection) from the browser.
 See the server status (Offline/Loading/Online) in the browser.
 Browse and download log-files.
