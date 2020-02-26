@@ -17,3 +17,10 @@ See the server status (Offline/Loading/Online) in the browser.
 Browse and download log-files.
 If one is provided, let users download the Minecraft mods Twitch profile (listing all the mods/configs), which lets users import said profile in the twitch-app
 to automatically download and setup a modded client compatible with the server.
+
+OBS. This is tested using a vanilla Minecraft server, and may or may not work as intended when running a modded server.
+Some modpacks provide their own "StartServer.bat/sh" script for starting the server, this script may also
+help setup some required files or configs. So it is recommended to run their scripts to let it setup
+and start the server at least once before using this app. (This app executes the .jar directly with the provided arguments
+, and does not use any start-scripts that may be provided, this should work just fine as long as everything is already setup
+beforehand)
