@@ -1,4 +1,4 @@
-Purpose of this app:
+#Purpose of this app:
 
 This app was created for when you host a private Minecraft-server on your local network and machine,
 you don't neccessarily want the Minecraft-server to be running 100% of the time.
@@ -8,14 +8,14 @@ If the server is heavily modded, this also has the benefit of letting users
 remotely start the server and see when it is done loading (through their browser), and ready to join. Saving them from prematurely loading a
 potentially resource-heavy game if they want to keep using their machine without interruptions, while waiting.
 
-Current features:
+##Current features:
 Let remote users start/stop the hosted Minecraft-server (with or without password-protection) from the browser.
 See the server status (Offline/Loading/Online) in the browser.
 Browse and download log-files.
 If one is provided, let users download the Minecraft mods Twitch profile (listing all the mods/configs), which lets users import said profile in the twitch-app
 to automatically download and setup a modded client compatible with the server.
 
-Instructions:
+##Instructions:
 
 publish using the dotnet CLI (or other tools), see link further down.
 Navigate to the published folder.
@@ -24,7 +24,7 @@ Place your server files inside the folder "MinecraftServerFiles"
 once to generate the eula.txt, open it to accept the eula (change it to "true"), and then run the .jar again to generate the rest of the files and folders).
 Rename the server executable to "server.jar".
 
-Configure Config.json:
+##Configure Config.json:
 
 	Title: Set the title on the web-interface.
 
@@ -43,11 +43,8 @@ Set up and host the web-app using a web-server (no support is given for this, se
 Make sure your web-server is reachable from the internet. Likely this requires port-forward/trigger to be enabled in your router (this may also be required for
 the actual minecraft server).
 
-
-
 The app is ready to be hosted using a IIS web-server out of the box
 (It needs to be published first, for information on building/publishing and hosting, see: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/?view=aspnetcore-3.1).
 Some additional configuration may be needed for other web-servers, see the above link.
 No support is given for setting up hosting. (The most common problem with hosting with IIS (and other) is permissions,
 so make sure IIS has sufficient permissions to the serverfiles and folders!)
-
