@@ -1,0 +1,117 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<html>
+<head lang="en">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+    <title>ServerControls</title>
+</head>
+<body onload="FetchStatus()">
+
+    <h1 id="Test">@ViewData["Title"]</h1>
+
+    <div class="buttons-container">
+
+        <button type="button" onclick="PromptPasswordForAction('StopServer');" class="btn-stop" id="StopButton">Stop server</button>
+
+        <button type="button" class="btn-loading" id="LoadingButton">Loading..</button>
+
+        <button type="button" onclick="PromptPasswordForAction('StartServer')" class="btn-start" id="StartButton">Start server</button>
+    </div>
+
+    <div class="icons-container">
+        <a href="/logs"> <img src="~/images/Document.png" /><span>Logs</span></a>
+        <a id="twitchDLProfileIcon"> <img src="~/images/TwitchDL.png" /><span>Download Twitch mod profile</span></a>
+    </div>
+    <div class="message-div">
+        <div class="message-window">@TempData["Message"]</div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    const buttons = [
+    document.getElementById("StartButton"),
+    document.getElementById("StopButton"),
+    document.getElementById("LoadingButton")
+    ];
+
+    IncludeTwitchIconIfTrue();
+
+    const FetchStatusInterval = setInterval(FetchStatus, 15000);
+
+    async function FetchStatus() {
+
+        const response = await fetch('/ServerControls/GetStatus');
+        const json = await response.json();
+
+        if (json.Status == "Offline") {
+
+            DisplayButtonWithId("StartButton");
+        }
+        else if (json.Status == "Online") {
+
+            DisplayButtonWithId("StopButton");
+        }
+        else if (json.Status == "Loading") {
+
+            DisplayButtonWithId("LoadingButton");
+        }
+
+        if (json.IsInputPossible == false) {
+
+            buttons[1].disabled = true;
+            buttons[1].title = "This function is not available right now";
+        }
+        else {
+            buttons[1].disabled = false;
+            buttons[1].title = null;
+        }
+    }
+
+    function DisplayButtonWithId(id) {
+
+        for (var i = 0, len = buttons.length; i < len; i++) {
+
+            if (buttons[i].id == id) {
+
+                buttons[i].style.visibility = "visible"
+            }
+            else {
+
+                buttons[i].style.visibility = "hidden"
+            }
+        }
+    }
+
+    function IncludeTwitchIconIfTrue() {
+
+        const twitchDLicon = document.getElementById("twitchDLProfileIcon");
+
+        const conf = "@ViewData["TwitchIncluded"]";
+
+        if (conf == "false" || conf == false) {
+            twitchDLicon.style.display = "none";
+        }
+        else {
+            twitchDLicon.style.display = "inherit";
+            twitchDLicon.href = "/TwitchProfile/FileName".replace("FileName", conf);
+        }
+    }
+
+    function PromptPasswordForAction(actiontocall) {
+
+        let psw = window.prompt("Password");
+
+        if (psw == null) {
+            return;
+        }
+        if (psw === "") {
+            psw = "NA"
+        }
+
+        window.location.href = "/ServerControls/Action/psw".replace("Action", actiontocall).replace("psw", psw);
+    }
+
+</script>

@@ -1,0 +1,152 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@font-face {
+    font-family: "Minecrafter_3";
+    src: url("../fonts/Minecrafter_3/Minecrafter_3.woff") format('woff');
+}
+
+h1 {
+    color: gold;
+    font-family: Minecrafter_3, Impact;
+    font-size: 56px;
+}
+
+a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: antiquewhite;
+    font-size: 26px;
+    text-decoration: none;
+}
+html {
+    height:100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    color: antiquewhite;
+    padding-top: 22px;
+    text-align: center;
+    max-height: 100%;
+    background-image: url("../images/DirtTile.png");
+    background-repeat: repeat;
+}
+
+.buttons-container {
+    display: block;
+    text-align: justify;
+    margin: 5px auto 5px auto;
+    width: 230px;
+    height: 120px;
+}
+
+button {
+    visibility:hidden;
+    position: absolute;
+    color: white;
+    height: inherit;
+    width: inherit;
+    font-size: 24px;
+    border: none;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.5s;
+}
+
+    button:hover:enabled {
+        cursor: pointer;
+    }
+
+    button:disabled {
+        background-color: grey;
+    }
+
+.btn-loading {
+    cursor: none;
+    background-color: grey;
+}
+
+.btn-start {
+    background-color: green;
+}
+
+    .btn-start:hover:enabled {
+        color: palegreen;
+    }
+
+.btn-stop {
+    background-color: red;
+}
+
+    .btn-stop:hover:enabled {
+        color: darkslategrey;
+    }
+
+.message-div {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.message-window {
+    max-width: 70%;
+    background-color: transparent;
+    font-size: 36px;
+    align-self: center;
+}
+
+@keyframes anim {
+    from { opacity: 1;}
+    to { opacity: 0;}
+}
+
+.message-window:not(:empty) {
+    opacity: 0;
+    animation-name: anim;
+    animation-delay: 0s;
+    animation-duration: 8s;
+    cursor: default;
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    justify-content: space-between;
+    margin: 50px auto 0 auto;
+    padding: 10px;
+}
+    .icons-container a {
+        margin:10px 20px 10px 20px;
+        display: inline-flex;
+        flex-direction: column;
+        border: 3px solid grey;
+        padding:15px;
+    }
+    .icons-container a img {
+        height:56px;
+        width:56px;
+        margin: auto;
+        cursor:pointer;
+    }
+
+/*LogsBrowser*/
+ul {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 auto 0 auto;
+    padding: 0;
+    width: 50%;
+}
+
+    ul li {
+        background: #8f8f8f;
+        font-size: 22px;
+        border: 8px;
+        border-radius: 4px;
+        padding: 1px;
+        margin: 5px;
+    }
