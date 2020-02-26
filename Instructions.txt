@@ -25,8 +25,12 @@ Set up and host the web-app using a web-server (no support is given for this, se
 Make sure your web-server is reachable from the internet. Likely this requires port-forward/trigger to be enabled in your router (this may also be required for
 the actual minecraft server).
 
-The app is ready to be hosted using a IIS web-server out of the box
-(It needs to be published first, for information on building/publishing and hosting, see: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/?view=aspnetcore-3.1).
-Some additional configuration may be needed for other web-servers, see the above link.
+The app is ready to be hosted using a IIS web-server out of the box.
+To produce the published folder in where they actual website-files are, for information on building/publishing and hosting, see: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/?view=aspnetcore-3.1).
+How to set upp as website in IIS: https://mywindowshub.com/how-to-install-and-setup-a-website-in-iis-on-windows-10/.
+How to set upp an application pool in IIS: https://www.blackbaud.com/files/support/guides/infinitydevguide/Subsystems/workflow-developer-help/Content/CreateANewApplicationPoolInstructions.htm.
+Note on application pools: In ".Net Framwork version", set to "No Managed Code".
+
+Some additional configuration may be needed for other web-servers besides IIS, see the top-most link.
 No support is given for setting up hosting. (The most common problem with hosting with IIS (and other) is permissions,
 so make sure IIS has sufficient permissions to the serverfiles and folders!)
