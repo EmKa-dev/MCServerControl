@@ -1,0 +1,9 @@
+All contributions and/or suggestions are welcome (Especially in design)
+
+Note to contributors: Only a basic set of features have been implemented. You are welcome to add or suggest
+more features, but keep in mind that the goal for this app is:
+
+1) Lightweight: The running cost of this app should be kept to a minimum, stealing as little computation
+resources away from the actual Minecraft-server as possible.
+2) Accessable and simple: It should be easy to setup and use. The code itself should be as simple as possible
+(no unneccessary complexity)
