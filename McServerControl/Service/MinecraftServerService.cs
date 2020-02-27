@@ -1,6 +1,7 @@
 ﻿using McServerControlAPI.Models;
 using Microsoft.Extensions.Logging;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -75,8 +76,17 @@ namespace McServerControlAPI.Services
                 _ServerProcess = new Process();
                 _ServerProcess.StartInfo = ConfigureInfo();
 
-                _logger.LogDebug("Starting process");
-                _ServerProcess.Start();
+                _logger.LogInformation("Starting process");
+                try
+                {
+                    _ServerProcess.Start();
+                }
+                catch (Win32Exception e)
+                {
+                    //TODO
+                    _logger.LogCritical($"{e.Message}. Make sure Java runtime is installed on your system, and the path to the folder containing java.exe" +
+                        $" is listed among the \"path\"-variables of your system environment variables");
+                }
 
                 IsInputPossible = true;
 
@@ -97,7 +107,7 @@ namespace McServerControlAPI.Services
                     }
                 }
 
-                _logger.LogInformation("Something went wrong in trying to start the server process");
+                _logger.LogWarning("Something went wrong in trying to start the server process");
             }
         }
 
@@ -207,7 +217,7 @@ namespace McServerControlAPI.Services
             var startinfo = new ProcessStartInfo
             {
                 WorkingDirectory = @".\Content\MinecraftServerFiles",
-                FileName = "java",
+                FileName = "cmd",
                 Arguments = ConfigReader.GetConfigProperty("JavaArguments"),
                 WindowStyle = ProcessWindowStyle.Normal,
                 CreateNoWindow = false,

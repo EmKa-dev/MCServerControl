@@ -1,0 +1,37 @@
+﻿
+Case: Service detects server-port is busy, but multiple "java"-processes are running.
+
+Description: The service, before starting the server-process, first checks if the port specified in server.properties is being used.
+			 If it is, it tries to find the running "java"-process likely to be an instance of this server. However, if there are multiple "java"-processes running,
+			 it cannot determine which one is the correct process for this server-instance.
+
+Current handling: Logs an error explaining that it cannot monitor the active instance.
+
+Possible solution: netstat.exe provides the information we need to determine which process is the one using the server-port, but it requires elevated privilages.
+				   To get elevated priviliges in the command prompt programmatically is alot of hassle, so unless this app sees major usage, and among those those
+				   multiple servers, this shall remain unsolved.
+
+Case: If server.jar is started externally (not from the web-interface) and while it's loading, Start server is called from the web-interface, RAM usage ramps up alot.
+
+Description: -=-
+
+Current handling: 
+
+Possible solution: This apparent memory leak needs to be investigated. However, it doesn't seem to happen twice in the same session
+					(Once RAM usage has jumped, it seems to stay there even if the above conditions are met again).
+					After some experimenting, this only happens when the server is started externally, and we call the StartServer-method while the external process has started,
+					but has not finished loading. I think this relates to reading the log-file while waiting for the "Done"-message,
+					since it doesn't happen when we are reading the stdout (Which is the case when the server is started via the web-interface).
+
+Case: Hosting a modded Minecraft-instance through the web-server makes it unavailable. 
+
+Description: When hosting a modded Minecraft-instance (Tested with All the Mods 3 and All the Mods 4), client are inexplicable unable to connect or even ping the server. 
+	     Hosting a Vanilla-instance (unmodded) through the app works correctly. Launching the jar directly, without using the app/web-interface, let's users connect,
+	     even though no other changes were done.
+
+Tests done: Change hosting model InProcess/OutofProcess.
+	    Instead of launching the jar directly we do it through a command prompt.
+	    Host on wi-fi/Ethernet.
+
+Hypothesis: Something about the forge mod loader server?
+	    

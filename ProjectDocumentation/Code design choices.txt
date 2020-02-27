@@ -1,0 +1,21 @@
+Why not make use of IHostedService and host the service as a BackgroundService?
+
+A hosted service in ASP.NET Core is automatically started when the app
+is starting. This behaviour is not neccessarily wanted, as we want the 
+user to be able to control when the service(minecraft-server) starts.
+The service 'StartServer()'-method is largely a "fire-and-forget" operation,
+Once started and running, the status of the server in internally tracked
+and updated, and can be read through its public property/ies. 
+The ASP-side of our app doesn't care about getting a result back
+in the form of a Task (which HostedServices enforces), thus adding 
+some (although very little) level of complexity, while functioning all the same.
+
+There is at least one pro though.
+Hosted services, aside from a Start-method, also let's us implement a Stop-method
+that is automatically called when the app is shutting down. This may let
+us get a chance to gracefully shut down the service and clean up resources. 
+But this will be done by the OS anyway in the case the app crashes/shuts down.
+
+Why not use auth middleware?
+
+Accessability. This may be added later, but right now, it isn't warranted in my opinion.
