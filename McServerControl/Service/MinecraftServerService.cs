@@ -217,7 +217,7 @@ namespace McServerControlAPI.Services
             var startinfo = new ProcessStartInfo
             {
                 WorkingDirectory = @".\Content\MinecraftServerFiles",
-                FileName = "cmd",
+                FileName = "java",
                 Arguments = ConfigReader.GetConfigProperty("JavaArguments"),
                 WindowStyle = ProcessWindowStyle.Normal,
                 CreateNoWindow = false,
