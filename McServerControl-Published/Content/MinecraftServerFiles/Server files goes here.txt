@@ -1,2 +1,0 @@
-Make sure you run the .jar to generate the required files/folders. Usually this needs to be done twice,
-once for generating "eula.txt", and once eula is accepted, once more to generate the rest.

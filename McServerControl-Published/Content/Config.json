@@ -1,7 +1,0 @@
-{
-  "Title": "Title",
-  "Password": "123",
-  "JavaArguments": "-jar server.jar",
-  "IncludeTwitchMCProfile": "false"
-
-}

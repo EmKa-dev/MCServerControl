@@ -43,7 +43,7 @@
     <None Update="Content\MinecraftServerFiles\Server files goes here.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Content\TwitchProfile\Twtich Mod PRofile goes here, if any.txt">
+    <None Update="Content\TwitchProfile\Twtich Mod Profile goes here, if any.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
