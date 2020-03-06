@@ -1,3 +1,19 @@
+Case: Hosting a modded Minecraft-instance through the web-server makes it unavailable. 
+
+Description: When hosting a modded Minecraft-instance (Tested with All the Mods 3 and All the Mods 4), client are inexplicable unable to connect or even ping the server. 
+	     Hosting a Vanilla-instance (unmodded) through the app works correctly. Launching the jar directly, without using the app/web-interface, let's users connect,
+	     even though no other changes were done.
+
+Tests done: Change hosting model InProcess/OutofProcess.
+	    Instead of launching the jar directly we do it through a command prompt.
+	    Host on wi-fi/Ethernet.
+
+Hypothesis: Something about the forge mod loader server?
+---------------------------------------------------------------------------------------------
+Case: Java process not outliving the .Net Core application-process.
+
+Description: Starting the Java-process through the web-interface, creates a dependency on the .Net Core application running. Since the .net-application is a console-application, when we start "TheMineCraftServer.jar", since it needs a terminal to output to, it binds to the .Net Core application, and thus the Minecraft-process is shut down whenever the .Net Core app is shut down. We can mediate this by opening a new console-window for the java-process, but this means we can no longer fetch the output of the java-process, or write to its input, which is the whole point.
+---------------------------------------------------------------------------------------------
 ﻿
 Case: Service detects server-port is busy, but multiple "java"-processes are running.
 
@@ -10,7 +26,7 @@ Current handling: Logs an error explaining that it cannot monitor the active ins
 Possible solution: netstat.exe provides the information we need to determine which process is the one using the server-port, but it requires elevated privilages.
 				   To get elevated priviliges in the command prompt programmatically is alot of hassle, so unless this app sees major usage, and among those those
 				   multiple servers, this shall remain unsolved.
-
+----------------------------------------------------------------------------------------------------
 Case: If server.jar is started externally (not from the web-interface) and while it's loading, Start server is called from the web-interface, RAM usage ramps up alot.
 
 Description: -=-
@@ -22,16 +38,4 @@ Possible solution: This apparent memory leak needs to be investigated. However, 
 					After some experimenting, this only happens when the server is started externally, and we call the StartServer-method while the external process has started,
 					but has not finished loading. I think this relates to reading the log-file while waiting for the "Done"-message,
 					since it doesn't happen when we are reading the stdout (Which is the case when the server is started via the web-interface).
-
-Case: Hosting a modded Minecraft-instance through the web-server makes it unavailable. 
-
-Description: When hosting a modded Minecraft-instance (Tested with All the Mods 3 and All the Mods 4), client are inexplicable unable to connect or even ping the server. 
-	     Hosting a Vanilla-instance (unmodded) through the app works correctly. Launching the jar directly, without using the app/web-interface, let's users connect,
-	     even though no other changes were done.
-
-Tests done: Change hosting model InProcess/OutofProcess.
-	    Instead of launching the jar directly we do it through a command prompt.
-	    Host on wi-fi/Ethernet.
-
-Hypothesis: Something about the forge mod loader server?
 	    
