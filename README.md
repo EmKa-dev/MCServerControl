@@ -1,5 +1,6 @@
 
-**#Disaclaimer: This project is abandoned, explanation below, do not use**
+**Disaclaimer: This project is abandoned, explanation below, do not use**
+
 **This project is abandoned because of unforseen issues causing the implementation of essential features* neigh impossible or very hard. C# and .NET might not be the right tools for this, for further details, see document "Known issues.txt"**
 ****
 # MCServerControl
