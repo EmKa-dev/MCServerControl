@@ -22,16 +22,6 @@ Example: "-Xms256M -Xmx1G -jar server.jar" ("-jar server.jar" is fine if you don
 Then the exact name of that file is typed into this field (including extension). Example: "IncludeTwitchMCProfile": "MyModPack.zip".
 Otherwise, if a mod-profile is not included, "false" or "".
 
-Set up and host the web-app using a web-server (no support is given for this, see link below for guidance).
+Set up and host the web-app using a web-server (Running the executable as-is runs with the .NET Core built-in web-server, Kestrel, on port 5000/5001) (no support is given for setting up webservers).
 Make sure your web-server is reachable from the internet. Likely this requires port-forward/trigger to be enabled in your router (this may also be required for
 the actual minecraft server).
-
-The app is ready to be hosted using a IIS web-server out of the box.
-How to set upp as website in IIS: https://mywindowshub.com/how-to-install-and-setup-a-website-in-iis-on-windows-10/.
-How to set upp an application pool in IIS: https://www.blackbaud.com/files/support/guides/infinitydevguide/Subsystems/workflow-developer-help/Content/CreateANewApplicationPoolInstructions.htm.
-Note on application pools: In ".Net Framwork version", set to "No Managed Code".
-
-Some additional configuration may be needed for other web-servers besides IIS, see:
-https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/?view=aspnetcore-3.1).
-No support is given for setting up hosting or problems with your web-server. (The most common problem with hosting with IIS (and other) is permissions,
-so make sure IIS has sufficient permissions to the serverfiles and folders!)
